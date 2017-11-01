@@ -5,3 +5,5 @@ FROM docker.elastic.co/logstash/logstash:5.6.3
 # Example: RUN logstash-plugin install logstash-filter-json
 RUN logstash-plugin install logstash-input-tcp
 RUN logstash-plugin install logstash-input-syslog
+RUN logstash-plugin install logstash-input-http
+RUN logstash-plugin install logstash-filter-grok
