@@ -6,14 +6,14 @@ import java.util.Calendar;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-public class LogJSONGenerator {
+public class LogFlatGenerator {
 
-	private static final Logger LOGGER	=	LoggerFactory.getLogger(LogJSONGenerator.class);
+	private static final Logger LOGGER	=	LoggerFactory.getLogger(LogFlatGenerator.class);
 	
 	private static SimpleDateFormat dateFormat	=	new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSSZ");
 	
 	public static void main(String[] args) throws Exception {
-		new LogJSONGenerator().proceed();
+		new LogFlatGenerator().proceed();
 
 	}
 	

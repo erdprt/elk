@@ -8,25 +8,70 @@
 		</layout>
 	</appender>
 
+	<!--
+	<appender name="SYSLOG"
+		class="net.logstash.logback.appender.LogstashSocketAppender">
+		<host>10.1.15.207</host>
+		<port>6000</port>
+	</appender>
+
 	<appender name="TCP"
 		class="net.logstash.logback.appender.LogstashTcpSocketAppender">
-		<destination>localhost:5000</destination>
-
-		<!-- encoder is required -->
+		<destination>10.1.15.207:5000</destination>
 		<encoder class="net.logstash.logback.encoder.LogstashEncoder" />
 	</appender>
 
 	<appender name="TCP2"
 		class="net.logstash.logback.appender.LogstashAccessTcpSocketAppender">
-		<destination>localhost:5000</destination>
-
-		<!-- encoder is required -->
+		<destination>10.1.15.207:5000</destination>
 		<encoder class="net.logstash.logback.encoder.LogstashAccessEncoder" />
 	</appender>
+	-->
 
-	<appender name="TCP3"
+	<appender name="TCP_DEFAULT"
 		class="net.logstash.logback.appender.LogstashTcpSocketAppender">
-		<destination>192.168.99.100:5000</destination>
+		<destination>10.1.15.207:5000</destination>
+		<encoder
+			class="net.logstash.logback.encoder.LoggingEventCompositeJsonEncoder">
+			<providers>
+				<mdc />
+				<context /> <!--Outputs entries from logback's context -->
+				<version /> <!-- Logstash json format version, the @version field in the output -->
+				<logLevel />
+				<loggerName />
+				<threadName />
+				<message />
+				<logstashMarkers /> <!-- Useful so we can add extra information for specific log lines as Markers -->
+				<arguments /> <!--or through StructuredArguments -->
+				<stackTrace />
+			</providers>
+		</encoder>
+	</appender>
+	
+	<appender name="TCP_GROK_DEFAULT"
+		class="net.logstash.logback.appender.LogstashTcpSocketAppender">
+		<destination>10.1.15.207:5010</destination>
+		<encoder
+			class="net.logstash.logback.encoder.LoggingEventCompositeJsonEncoder">
+			<providers>
+				<mdc />
+				<context /> <!--Outputs entries from logback's context -->
+				<version /> <!-- Logstash json format version, the @version field in the output -->
+				<logLevel />
+				<loggerName />
+				<threadName />
+				<message />
+				<logstashMarkers /> <!-- Useful so we can add extra information for specific log lines as Markers -->
+				<arguments /> <!--or through StructuredArguments -->
+				<stackTrace />
+			</providers>
+		</encoder>
+	</appender>
+	
+
+	<appender name="SYSLOG_DEFAULT"
+		class="net.logstash.logback.appender.LogstashTcpSocketAppender">
+		<destination>10.1.15.207:6000</destination>
 
 		<encoder
 			class="net.logstash.logback.encoder.LoggingEventCompositeJsonEncoder">
@@ -36,18 +81,8 @@
 				<version /> <!-- Logstash json format version, the @version field in the output -->
 				<logLevel />
 				<loggerName />
-
-				<pattern>
-					<pattern> <!-- we can add some custom fields to be sent with all the log entries. { makke filtering easier in Logstash -->
-						"appName": "elk-testdata",<!--or searching with Kibana -->
-						"appVersion": "1.0"
-						}
-					</pattern>
-				</pattern>
-
 				<threadName />
 				<message />
-
 				<logstashMarkers /> <!-- Useful so we can add extra information for specific log lines as Markers -->
 				<arguments /> <!--or through StructuredArguments -->
 
@@ -56,10 +91,21 @@
 		</encoder>
 	</appender>
 
-	<logger name="fr.erdprt.logs.LogGenerator" level="INFO">
-		<appender-ref ref="TCP3" />
+
+	<logger name="fr.erdprt.logs.LogJSONGenerator" level="INFO">
+		<!-- GOOD
+		<appender-ref ref="TCP" />
+		<appender-ref ref="TCP_DEFAULT" />
+		 -->
+		 <appender-ref ref="TCP_DEFAULT" />
+		<appender-ref ref="SYSLOG_DEFAULT" />
 	</logger>
 
-	<root level="ERROR">
+	<logger name="fr.erdprt.logs.LogFlatGenerator" level="INFO">
+		 <appender-ref ref="TCP_GROK_DEFAULT" />
+	</logger>
+
+	<root level="WARN">
+		<appender-ref ref="CONSOLE" />
 	</root>
 </configuration>
