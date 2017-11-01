@@ -5,7 +5,8 @@
 server.name: kibana
 server.host: "0"
 # ERDPRT: warn with dockertoolbox, change with internal ip/host
-elasticsearch.url: http://elasticsearch:9200
+#elasticsearch.url: http://elasticsearch:9200
+elasticsearch.url: http://10.1.15.207:9200
 
 ## Disable X-Pack
 ## see https://www.elastic.co/guide/en/x-pack/current/xpack-settings.html
