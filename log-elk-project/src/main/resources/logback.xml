@@ -11,26 +11,26 @@
 	<!--
 	<appender name="SYSLOG"
 		class="net.logstash.logback.appender.LogstashSocketAppender">
-		<host>10.1.15.207</host>
+		<host>localhost</host>
 		<port>6000</port>
 	</appender>
 
 	<appender name="TCP"
 		class="net.logstash.logback.appender.LogstashTcpSocketAppender">
-		<destination>10.1.15.207:5000</destination>
+		<destination>localhost:5000</destination>
 		<encoder class="net.logstash.logback.encoder.LogstashEncoder" />
 	</appender>
 
 	<appender name="TCP2"
 		class="net.logstash.logback.appender.LogstashAccessTcpSocketAppender">
-		<destination>10.1.15.207:5000</destination>
+		<destination>localhost:5000</destination>
 		<encoder class="net.logstash.logback.encoder.LogstashAccessEncoder" />
 	</appender>
 	-->
 
 	<appender name="TCP_DEFAULT"
 		class="net.logstash.logback.appender.LogstashTcpSocketAppender">
-		<destination>10.1.15.207:5000</destination>
+		<destination>localhost:5000</destination>
 		<encoder
 			class="net.logstash.logback.encoder.LoggingEventCompositeJsonEncoder">
 			<providers>
@@ -50,7 +50,7 @@
 	
 	<appender name="TCP_GROK_DEFAULT"
 		class="net.logstash.logback.appender.LogstashTcpSocketAppender">
-		<destination>10.1.15.207:5010</destination>
+		<destination>localhost:5050</destination>
 		<encoder
 			class="net.logstash.logback.encoder.LoggingEventCompositeJsonEncoder">
 			<providers>
@@ -71,7 +71,7 @@
 
 	<appender name="SYSLOG_DEFAULT"
 		class="net.logstash.logback.appender.LogstashTcpSocketAppender">
-		<destination>10.1.15.207:6000</destination>
+		<destination>localhost:6000</destination>
 
 		<encoder
 			class="net.logstash.logback.encoder.LoggingEventCompositeJsonEncoder">

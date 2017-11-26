@@ -4,26 +4,4 @@
 #
 server.name: kibana
 server.host: "0"
-# ERDPRT: warn with dockertoolbox, change with internal ip/host
 elasticsearch.url: http://elasticsearch:9200
-
-# Time in milliseconds to wait for Elasticsearch to respond to pings. Defaults to the value of
-# the elasticsearch.requestTimeout setting.
-elasticsearch.pingTimeout: 10000
-
-# Time in milliseconds to wait for responses from the back end or Elasticsearch. This value
-# must be a positive integer.
-elasticsearch.requestTimeout: 30000
-
-
-
-## Disable X-Pack
-## see https://www.elastic.co/guide/en/x-pack/current/xpack-settings.html
-##     https://www.elastic.co/guide/en/x-pack/current/installing-xpack.html#xpack-enabling
-#
-xpack.security.enabled: false
-xpack.monitoring.enabled: false
-xpack.ml.enabled: false
-xpack.graph.enabled: false
-xpack.reporting.enabled: false
-xpack.grokdebugger.enabled: false
