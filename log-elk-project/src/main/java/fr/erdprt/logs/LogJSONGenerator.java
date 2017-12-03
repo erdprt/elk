@@ -19,9 +19,9 @@ public class LogJSONGenerator {
 	
 	public void proceed() throws Exception {
 		
-		for (int index=0;index<10;index++) {
-			String firstName	=	"firstName-" + index;
-			String lastName	=	"lastName-" + index;
+		for (int index=0;index<100;index++) {
+			String firstName	=	"firstName-" + index%6;
+			String lastName	=	"lastName-" + index%8;
 			int age	=	index;
 			
 			LOGGER.info("{},{},{},{}", dateFormat.format(Calendar.getInstance().getTime()) ,firstName, lastName, age);

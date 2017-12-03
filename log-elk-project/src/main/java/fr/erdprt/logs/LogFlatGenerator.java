@@ -19,13 +19,13 @@ public class LogFlatGenerator {
 	
 	public void proceed() throws Exception {
 		
-		for (int index=0;index<10;index++) {
-			String firstName	=	"firstName-" + index;
-			String lastName	=	"lastName-" + index;
+		for (int index=0;index<200;index++) {
+			String firstName	=	"firstName-" + index%7;
+			String lastName	=	"lastName-" + index%11;
 			int age	=	index;
 			
 			LOGGER.info("{},{},{},{}", dateFormat.format(Calendar.getInstance().getTime()) ,firstName, lastName, age);
-			Thread.sleep(1000);
+			Thread.sleep(250);
 			
 		}
 		
