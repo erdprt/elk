@@ -24,11 +24,14 @@ services:
         ELK_VERSION: $ELK_VERSION
     volumes:
       - ./logstash/config/logstash.yml:/usr/share/logstash/config/logstash.yml
-      - ./logstash/pipeline:/usr/share/logstash/pipeline
+      - ./logstash/pipeline:/usr/share/logstash/pipeline 
+
     ports:
       - "5000:5000"
       - "5050:5050"
-      - "6000:6000"
+      - "5100:5100"
+      - "5150:5150"
+      - "5200:5200"      
       - "9600:9600"
       
     environment:

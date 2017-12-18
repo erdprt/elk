@@ -68,10 +68,49 @@
 		</encoder>
 	</appender>
 	
+	<appender name="TCP_GROK_COORD_DEFAULT"
+		class="net.logstash.logback.appender.LogstashTcpSocketAppender">
+		<destination>localhost:5100</destination>
+		<encoder
+			class="net.logstash.logback.encoder.LoggingEventCompositeJsonEncoder">
+			<providers>
+				<mdc />
+				<context /> <!--Outputs entries from logback's context -->
+				<version /> <!-- Logstash json format version, the @version field in the output -->
+				<logLevel />
+				<loggerName />
+				<threadName />
+				<message />
+				<logstashMarkers /> <!-- Useful so we can add extra information for specific log lines as Markers -->
+				<arguments /> <!--or through StructuredArguments -->
+				<stackTrace />
+			</providers>
+		</encoder>
+	</appender>
+	
+	<appender name="TCP_GROK_1"
+		class="net.logstash.logback.appender.LogstashTcpSocketAppender">
+		<destination>localhost:5200</destination>
+		<encoder
+			class="net.logstash.logback.encoder.LoggingEventCompositeJsonEncoder">
+			<providers>
+				<mdc />
+				<context /> <!--Outputs entries from logback's context -->
+				<version /> <!-- Logstash json format version, the @version field in the output -->
+				<logLevel />
+				<loggerName />
+				<threadName />
+				<message />
+				<logstashMarkers /> <!-- Useful so we can add extra information for specific log lines as Markers -->
+				<arguments /> <!--or through StructuredArguments -->
+				<stackTrace />
+			</providers>
+		</encoder>
+	</appender>	
 
 	<appender name="SYSLOG_DEFAULT"
 		class="net.logstash.logback.appender.LogstashTcpSocketAppender">
-		<destination>localhost:6000</destination>
+		<destination>localhost:5150</destination>
 
 		<encoder
 			class="net.logstash.logback.encoder.LoggingEventCompositeJsonEncoder">
@@ -103,6 +142,14 @@
 
 	<logger name="fr.erdprt.logs.LogFlatGenerator" level="INFO">
 		 <appender-ref ref="TCP_GROK_DEFAULT" />
+	</logger>
+
+	<logger name="fr.erdprt.logs.CoordinatesGenerator" level="INFO">
+
+		 <appender-ref ref="TCP_GROK_COORD_DEFAULT" />
+
+		 <appender-ref ref="TCP_GROK_1" />
+		 
 	</logger>
 
 	<root level="WARN">
