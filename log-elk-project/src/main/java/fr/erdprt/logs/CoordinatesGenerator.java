@@ -17,7 +17,9 @@ public class CoordinatesGenerator {
 	
 	public static final String[] METHODS = new String[] { "GET", "POST", "PUT", "DELETE" };
 	
-	public static final String[] IPS = new String[] { "1.0.87.0", "81.0.87.0", "104.129.204.92", "178.251.73.228", "198.102.9.16","212.183.207.0" , "212.184.19.0", "223.255.255.0"};
+	//public static final String[] IPS = new String[] { "1.0.87.0", "81.0.87.0", "104.129.204.92", "178.251.73.228", "198.102.9.16","212.183.207.0" , "212.184.19.0" , "223.255.255.0"};
+	
+	public static final String[] IPS = new String[] { "1.0.87.0", "212.183.207.0" };
 
 	public static final String[] PATHS = new String[] { "/product/", "/product/12/", "/product/45/", "/customer/",
 			"/customer/5" };
