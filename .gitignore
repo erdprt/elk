@@ -2,3 +2,7 @@
 **/.classpath
 log-elk-project/.project
 **/*.settings
+*RemoteSystemsTempFiles/
+*.recommenders/
+/log-elk-project/.classpath
+/log-elk-project/.project
